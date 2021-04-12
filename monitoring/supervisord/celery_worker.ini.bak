@@ -1,0 +1,19 @@
+[program:celery-worker]
+command=/usr/local/webserver/monitor-tel/bin/celery worker -A mysite.celery -l INFO
+directory=/usr/local/webserver/monitor-tel/mysite
+environment=PATH="/usr/local/webserver/monitor-tel/mysite"
+stdout_logfile=/usr/local/webserver/monitor-tel/logs/worker_celery.log
+stderr_logfile=/usr/local/webserver/monitor-tel/logs/worker_celery.log
+autostart=true
+autorestart=true
+#priority=901
+
+
+[program:celery-beat]
+command=/usr/local/webserver/monitor-tel/bin/celery beat -A mysite.celery -l INFO
+directory=/usr/local/webserver/monitor-tel/mysite
+environment=PATH="/usr/local/webserver/monitor-tel/mysite"
+stdout_logfile=/usr/local/webserver/monitor-tel/logs/worker_celery.log
+stderr_logfile=/usr/local/webserver/monitor-tel/logs/worker_celery.log
+autostart=true
+autorestart=true
